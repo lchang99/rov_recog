@@ -1,7 +1,7 @@
 # rov_recog
 1. Video Feed
 	Calibrate (underwater) - Distortion, Ball color
-	How many frames are we analyzing per second
+	How many frames are we analyzing per second?
 2. Detection
 	Contours vs Hough transforms
 		Hough (somewhat written) - How to change parameters according to circle size
