@@ -1,9 +1,9 @@
 import cv2 as cv
 import numpy as np
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 
 # The image we are trying to read
-img = cv.imread('/mnt/c/python_code/cv_tutorial/mult_colored_balls.jpg', -1)
+img = cv.imread('mult_colored_balls.jpg', -1)
 
 # Convert RGB to HSV
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
