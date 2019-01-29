@@ -3,7 +3,7 @@ import numpy as np
 #from matplotlib import pyplot as plt
 
 # The image we are trying to read
-img = cv.imread('mult_colored_balls.jpg', -1)
+img = cv.imread('mult_colored_balls3.jpg', -1)
 
 # Convert RGB to HSV
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
@@ -23,14 +23,14 @@ cimg = cv.cvtColor(edges, cv.COLOR_GRAY2BGR)
 circles = cv.HoughCircles(edges, cv.HOUGH_GRADIENT, 1, 150,
                             param1 = 200, param2 = 75,
                             minRadius = 0, maxRadius = 0)
+if(circles is not None):
+    circles = np.uint16(np.around(circles))
 
-circles = np.uint16(np.around(circles))
-
-for i in circles[0, :]:
-    #draw the outer circle
-    cv.circle(cimg, (i[0], i[1]), i[2], (0, 255, 0), 2)
-    #draw the center of the circle
-    cv.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
+    for i in circles[0, :]:
+        #draw the outer circle
+        cv.circle(cimg, (i[0], i[1]), i[2], (0, 255, 0), 2)
+        #draw the center of the circle
+        cv.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
 
 #show the image
 cv.imshow('img', img)
