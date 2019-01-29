@@ -1,9 +1,11 @@
 import cv2 as cv
 import numpy as np
+import time
 #from matplotlib import pyplot as plt
 
 # The image we are trying to read
-img = cv.imread('mult_colored_balls3.jpg', -1)
+start = time.time();
+img = cv.imread('yarn.jpg', -1)
 
 # Convert RGB to HSV
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
@@ -31,7 +33,7 @@ if(circles is not None):
         cv.circle(cimg, (i[0], i[1]), i[2], (0, 255, 0), 2)
         #draw the center of the circle
         cv.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
-
+print(time.time() - start)
 #show the image
 cv.imshow('img', img)
 cv.imshow('mask', mask)
