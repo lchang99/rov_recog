@@ -5,7 +5,7 @@ import time
 #TODO some how sort the contours from findContours from big to small so we can focus on the bigger ones?
 #read image
 start = time.time();
-raw_img = cv.imread('yarn.jpg', -1)
+raw_img = cv.imread('real_ball_light_1.jpg', -1)
 hsv_img = cv.cvtColor(raw_img, cv.COLOR_BGR2HSV) #convert to hsv
 
 #range of yellow in HSV
@@ -37,23 +37,23 @@ area_minimum = 100
 
 
 #now I should have far fewer contours to work with
-_, contours, hierarchy = cv.findContours(edges_img, cv.RETR_TREE, 
+_, contours, hierarchy = cv.findContours(edges_img, cv.RETR_TREE,
     cv.CHAIN_APPROX_NONE)
 #at this point, may not be many left in contours list because they got filled
 #so, this loop will not loop very many times
 #print(len(contours))
 for cont in contours:
     area = cv.contourArea(cont)
-    
+
     if(area > area_minimum):
         #draw a circle that best fits the points
         center, radius = cv.minEnclosingCircle(cont);
 
         area_theoretical = 3.14 * radius * radius
         percent_error = abs((area-area_theoretical)/area_theoretical)
-        
+
         #check if this is the most circular contour so far
-        if (percent_error < lowest_error):      
+        if (percent_error < lowest_error):
             lowest_error = percent_error
             most_circular_contour = cont
 
