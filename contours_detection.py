@@ -5,12 +5,13 @@ import time
 #TODO some how sort the contours from findContours from big to small so we can focus on the bigger ones?
 #read image
 start = time.time();
-raw_img = cv.imread('mult_colored_balls.jpg', -1)
+raw_img = cv.imread('yarn.jpg', -1)
 hsv_img = cv.cvtColor(raw_img, cv.COLOR_BGR2HSV) #convert to hsv
 
 #range of yellow in HSV
-lower_yellow = np.array([19, 150, 189])
-upper_yellow = np.array([30, 255, 255])
+#the range effects the performance
+lower_yellow = np.array([19, 100, 70])
+upper_yellow = np.array([77, 255, 255])
 
 #maybe we could use a binary image instead, do a different type of blur
 mask_img = cv.inRange(hsv_img, lower_yellow, upper_yellow) #black and white
@@ -66,7 +67,7 @@ cimg = cv.cvtColor(edges_img, cv.COLOR_GRAY2BGR)
 
 cv.drawContours(cimg, contours_list,  -1, (158,255,0), 2)
 print(time.time() - start)
-#cv.imshow('raw_img', raw_img)
+cv.imshow('raw_img', raw_img)
 #cv.imshow('mask_img', mask_img)
 #cv.imshow('bilat_filt_img', bilat_filt_img)
 #cv.imshow('edges_img', edges_img)
