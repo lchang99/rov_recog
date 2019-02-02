@@ -2,9 +2,10 @@ import numpy as np
 import cv2 as cv
 import time
 #TODO run against test images to make sure yellow color bounds and area min are good
+#TODO some how sort the contours from findContours from big to small so we can focus on the bigger ones?
 #read image
 start = time.time();
-raw_img = cv.imread('no_ball_2.jpg', -1)
+raw_img = cv.imread('mult_colored_balls.jpg', -1)
 hsv_img = cv.cvtColor(raw_img, cv.COLOR_BGR2HSV) #convert to hsv
 
 #range of yellow in HSV
@@ -65,10 +66,10 @@ cimg = cv.cvtColor(edges_img, cv.COLOR_GRAY2BGR)
 
 cv.drawContours(cimg, contours_list,  -1, (158,255,0), 2)
 print(time.time() - start)
-cv.imshow('raw_img', raw_img)
-cv.imshow('mask_img', mask_img)
+#cv.imshow('raw_img', raw_img)
+#cv.imshow('mask_img', mask_img)
 #cv.imshow('bilat_filt_img', bilat_filt_img)
-cv.imshow('edges_img', edges_img)
+#cv.imshow('edges_img', edges_img)
 cv.imshow('detected circles', cimg)
 
 k = cv.waitKey(0)

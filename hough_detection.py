@@ -5,7 +5,7 @@ import time
 
 # The image we are trying to read
 start = time.time();
-img = cv.imread('yarn.jpg', -1)
+img = cv.imread('mult_colored_balls.jpg', -1)
 
 # Convert RGB to HSV
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
@@ -35,10 +35,10 @@ if(circles is not None):
         cv.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
 print(time.time() - start)
 #show the image
-cv.imshow('img', img)
-cv.imshow('mask', mask)
-cv.imshow('smooth', smooth)
-cv.imshow('edges', edges)
+#cv.imshow('img', img)
+#cv.imshow('mask', mask)
+#cv.imshow('smooth', smooth)
+#cv.imshow('edges', edges)
 cv.imshow('detected circles', cimg)
 #cv.imshow('mask', mask)
 k = cv.waitKey(0)
